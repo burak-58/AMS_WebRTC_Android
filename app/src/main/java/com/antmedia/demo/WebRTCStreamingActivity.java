@@ -2,22 +2,17 @@ package com.antmedia.demo;
 
 import android.app.Activity;
 import android.os.Bundle;
-
-import org.webrtc.SurfaceViewRenderer;
-
 import io.antmedia.webrtcandroidframework.api.IWebRTCClient;
 
-public class SimplePublishActivity extends Activity {
+public class WebRTCStreamingActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_simple_publish);
-
-        SurfaceViewRenderer fullScreenRenderer = findViewById(R.id.full_screen_renderer);
+        setContentView(R.layout.webrtc_streaming);
 
         IWebRTCClient webRTCClient = IWebRTCClient.builder()
                 .setActivity(this)
-                .setLocalVideoRenderer(fullScreenRenderer)
+                .setLocalVideoRenderer(findViewById(R.id.full_screen_renderer))
                 .setServerUrl("wss://test.antmedia.io:5443/LiveApp/websocket")
                 .build();
 
